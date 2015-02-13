@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DEPOTAKİP" Class="DeposDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\DEPOTAKİP.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="DepoTakip.Properties.Settings" SettingsPropertyName="DEPOTAKİPConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CATEGORY" Member="CATEGORies">
+    <Type Name="CATEGORY">
+      <Column Name="Category_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CATEGORY_PRODUCT" Member="PRODUCTs" ThisKey="Category_id" OtherKey="Category_id" Type="PRODUCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DEPO" Member="DEPOs">
+    <Type Name="DEPO">
+      <Column Name="Depo_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DepoName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Adress" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Created_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MaxKapasite" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_id" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />
+      <Association Name="DEPO_DEPOCONTAIN" Member="DEPOCONTAINs" ThisKey="Depo_id" OtherKey="Depo_id" Type="DEPOCONTAIN" />
+      <Association Name="DEPO_MOVEMENT" Member="MOVEMENTs" ThisKey="Depo_id" OtherKey="From_move" Type="MOVEMENT" />
+      <Association Name="DEPO_MOVEMENT1" Member="MOVEMENTs1" ThisKey="Depo_id" OtherKey="to_move" Type="MOVEMENT" />
+      <Association Name="EMPLOYEE_DEPO" Member="EMPLOYEE" ThisKey="Employee_id" OtherKey="Employee_TCNO" Type="EMPLOYEE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DEPOCONTAIN" Member="DEPOCONTAINs">
+    <Type Name="DEPOCONTAIN">
+      <Column Name="Depo_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Product_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="DEPO_DEPOCONTAIN" Member="DEPO" ThisKey="Depo_id" OtherKey="Depo_id" Type="DEPO" IsForeignKey="true" />
+      <Association Name="PRODUCT_DEPOCONTAIN" Member="PRODUCT" ThisKey="Product_id" OtherKey="Product_id" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMPLOYEE" Member="EMPLOYEEs">
+    <Type Name="EMPLOYEE">
+      <Column Name="Employee_TCNO" Type="System.String" DbType="NVarChar(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Adress" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="admin_mi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="EMPLOYEE_DEPO" Member="DEPOs" ThisKey="Employee_TCNO" OtherKey="Employee_id" Type="DEPO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MOVEMENT" Member="MOVEMENTs">
+    <Type Name="MOVEMENT">
+      <Column Name="From_move" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="to_move" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Product_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="DEPO_MOVEMENT" Member="DEPO" ThisKey="From_move" OtherKey="Depo_id" Type="DEPO" IsForeignKey="true" />
+      <Association Name="DEPO_MOVEMENT1" Member="DEPO1" ThisKey="to_move" OtherKey="Depo_id" Type="DEPO" IsForeignKey="true" />
+      <Association Name="PRODUCT_MOVEMENT" Member="PRODUCT" ThisKey="Product_id" OtherKey="Product_id" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCT" Member="PRODUCTs">
+    <Type Name="PRODUCT">
+      <Column Name="Product_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductName" AutoSync="OnInsert" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Category_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="PRODUCT_DEPOCONTAIN" Member="DEPOCONTAINs" ThisKey="Product_id" OtherKey="Product_id" Type="DEPOCONTAIN" />
+      <Association Name="PRODUCT_MOVEMENT" Member="MOVEMENTs" ThisKey="Product_id" OtherKey="Product_id" Type="MOVEMENT" />
+      <Association Name="PRODUCT_URUNMUADIL" Member="URUNMUADILs" ThisKey="Product_id" OtherKey="Product_id" Type="URUNMUADIL" />
+      <Association Name="PRODUCT_URUNMUADIL1" Member="URUNMUADILs1" ThisKey="Product_id" OtherKey="Muadil_id" Type="URUNMUADIL" />
+      <Association Name="CATEGORY_PRODUCT" Member="CATEGORY" ThisKey="Category_id" OtherKey="Category_id" Type="CATEGORY" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.URUNMUADIL" Member="URUNMUADILs">
+    <Type Name="URUNMUADIL">
+      <Column Name="Product_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Muadil_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PRODUCT_URUNMUADIL" Member="PRODUCT" ThisKey="Product_id" OtherKey="Product_id" Type="PRODUCT" IsForeignKey="true" />
+      <Association Name="PRODUCT_URUNMUADIL1" Member="PRODUCT1" ThisKey="Muadil_id" OtherKey="Product_id" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

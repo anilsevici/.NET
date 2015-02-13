@@ -1,0 +1,14 @@
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\bin\Debug\DEPOTAKİP.mdf
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\bin\Debug\DEPOTAKİP_log.ldf
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\bin\Debug\DepoTakip.exe.config
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\bin\Debug\DepoTakip.exe
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\bin\Debug\DepoTakip.pdb
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.AdminPanel.resources
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.Login.resources
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.Properties.Resources.resources
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.csproj.GenerateResource.Cache
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.exe
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.pdb
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.PersonelPanel.resources
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.UsSorgu.resources
+C:\Users\ANIL\documents\visual studio 2012\Projects\DepoTakip\DepoTakip\obj\Debug\DepoTakip.csprojResolveAssemblyReference.cache
